@@ -100,8 +100,9 @@ chrome.extension.sendMessage({}, function () {
                   var elem = '<tr class="imp"><th>Proxy Bid:</th><td>$' + item.proxy_bid + '</td></tr>';
                   document.querySelector('#item-detail > div > table > tbody:nth-child(2) > tr:nth-child(2)').insertAdjacentHTML('beforeBegin', elem)
 				  document.querySelector('#item-detail > div > table > tbody:nth-child(2) > tr:nth-child(7) > td > span').innerHTML += ' (' + item.high_bidder_email + ')'
-				  elem = '<input type="button" onClick="javascript:window.open(\'https://bidbotr.herokuapp.com/add/?url=\' + document.location.href)" value="Bid on bidbotr">'
-				  document.querySelector('#item-detail > div > div > form > input[type="submit"]:nth-child(7)').insertAdjacentHTML('beforeBegin', elem)
+				  elem = '<input type="button" onClick="javascript:document.location.href = \'https://bidbotr.herokuapp.com/add/?url=\' + document.location.href" value="Bid on bidbotr">'
+				  document.querySelector('#item-detail > div > div > form > input[type="submit"]:nth-child(7)').insertAdjacentHTML('beforeEnd', elem)
+				  document.querySelector('#item-detail > h2 > span').insertAdjacentHTML('beforeEnd', '&nbsp;<a style="font-size: 0.45em" href="https://www.amazon.com/s/?url=search-alias%3Daps&field-keywords=' + item.title + '">Search Amazon</a>')
                 }
                 // Promise.all([getLocalConfig()]).then(fireTrigger);
             }
